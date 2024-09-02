@@ -24,4 +24,13 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Start application
+      run: |
+        npm start &
+        sleep 10  # Give the application some time to start
+        # Optionally, you could run additional commands to check if the app started successfully
+        curl http://localhost:3000  # Replace with your app’s URL and port
+        # If the app needs to be stopped after testing:
+        pkill -f "node server.js"  # Replace with the command to stop your app if necessary
+
     
